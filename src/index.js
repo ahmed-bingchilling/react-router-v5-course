@@ -1,24 +1,45 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import './index.css'
-import App from './components/App'
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Nav from "./components/Nav";
+import ErrorPage from "./Pages/ErrorPage";
+import HomePage from "./Pages/HomePage";
+import PlayersPage from "./Pages/PlayersPage";
+import TeamPage from "./Pages/TeamPage";
+import PlayerStats from "./components/PlayerStat";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Nav />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/players",
+        element: <PlayersPage />,
+        children: [
+          {
+            path: "/players/:id",
+            element: <PlayerStats />,
+          },
+        ],
+      },
 
-function ColorfulBorder() {
-  return (
-    <ul className='border-container'>
-      <li className='border-item' style={{ background: 'var(--red)' }} />
-      <li className='border-item' style={{ background: 'var(--blue)' }} />
-      <li className='border-item' style={{ background: 'var(--pink)' }} />
-      <li className='border-item' style={{ background: 'var(--yellow)' }} />
-      <li className='border-item' style={{ background: 'var(--aqua)' }} />
-    </ul>
-  )
-}
+      {
+        path: "/teams",
+        element: <TeamPage />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.render(
   <React.StrictMode>
-    <ColorfulBorder />
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

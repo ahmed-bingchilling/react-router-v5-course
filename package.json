@@ -2,9 +2,11 @@
   "name": "hash-history-basketball-league-v5",
   "version": "1.0.0",
   "dependencies": {
-    "react": "^16.13.1",
+    "@tanstack/react-query": "4.24.4",
+    "react": "^17.0.2",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

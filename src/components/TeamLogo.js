@@ -1031,8 +1031,7 @@ const logos = {
 };
 
 export default function TeamLogo({ width = "145px ", id, ...rest }) {
-  const logoPic = Object.keys(logos).map((key, index) => {
-    console.log(key);
+  const logosPic = Object.keys(logos).map((key, index) => {
     return (
       <svg
         width={width}
@@ -1043,15 +1042,29 @@ export default function TeamLogo({ width = "145px ", id, ...rest }) {
         className="row"
         key={index}
       >
-        <Link>{logos[key]}</Link>
+        <Link to={`/${key}`}>{logos[key]}</Link>
       </svg>
     );
   });
 
-  console.log(logoPic);
   return (
-    <div className="home-grid">
-      <div className="home-grid-items">{logoPic}</div>
-    </div>
+    <>
+      {!id ? (
+        <div className="home-grid">
+          <div className="home-grid-items">{logosPic}</div>
+        </div>
+      ) : (
+        <svg
+          width="200px"
+          {...rest}
+          x="0px"
+          y="0px"
+          viewBox="0 0 125.397 125.397"
+          className="center"
+        >
+          <Link>{logos[id]}</Link>
+        </svg>
+      )}
+    </>
   );
 }

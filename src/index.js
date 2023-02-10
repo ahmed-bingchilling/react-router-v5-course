@@ -8,6 +8,8 @@ import HomePage from "./Pages/HomePage";
 import PlayersPage from "./Pages/PlayersPage";
 import TeamPage from "./Pages/TeamPage";
 import PlayerStats from "./components/PlayerStat";
+import TeamStats from "./components/TeamStats";
+import OfficialTeamPage from "./Pages/OfficialTeamPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,11 +30,17 @@ const router = createBrowserRouter([
           },
         ],
       },
-
       {
         path: "/teams",
         element: <TeamPage />,
+        children: [
+          {
+            path: "/teams/:team",
+            element: <TeamStats />,
+          },
+        ],
       },
+      { path: "/:teamname", element: <OfficialTeamPage /> },
     ],
   },
 ]);

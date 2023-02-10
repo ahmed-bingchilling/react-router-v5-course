@@ -1,5 +1,5 @@
-import useFetch from './useFetch'
+import useFetch from "./useFetch";
 
-export default function useTeamNames () {
-  return useFetch('/teams', 'GET')
+export default function useTeamNames() {
+  return useFetch("/teams", "GET").response;
 }

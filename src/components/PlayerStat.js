@@ -14,7 +14,6 @@ export default function PlayerStats() {
   const currentPlayer = players.filter((player) => {
     return player.id === id;
   });
-  console.log(currentPlayer);
 
   const playerDetails = currentPlayer.map((details) => {
     return (
@@ -27,7 +26,10 @@ export default function PlayerStats() {
             <li>
               Team{" "}
               <div>
-                <Link to={`/${details.teamId}`}>Bulls</Link>
+                <Link to={`/${details.teamId}`}>
+                  {details.teamId.charAt(0).toUpperCase() +
+                    details.teamId.slice(1)}
+                </Link>
               </div>
             </li>
             <li>
